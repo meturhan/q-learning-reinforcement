@@ -163,7 +163,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(99, 13);
             this.label4.TabIndex = 10;
-            this.label4.Text = "M.EMRE TURHAN";
+
             // 
             // Nud_OgrenmeTurlari
             // 
@@ -264,7 +264,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Tual);
             this.Name = "Form1";
-            this.Text = "QLearning - M.Emre TURHAN";
+
             ((System.ComponentModel.ISupportInitialize)(this.Tual)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Nud_OdaSayisi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Nud_HedefOda)).EndInit();
