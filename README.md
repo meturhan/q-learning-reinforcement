@@ -32,30 +32,52 @@ q-learning-reinforcement/
 ```mermaid
 flowchart TD
     subgraph Environment
-        A[Room Layout<br>Grid-based positions]
-        B[Reward Matrix R(s,a)<br>-1: no connection<br>0: connected<br>100: goal connection]
+        A1[Room Layout]
+        A2[Grid-based positions]
+        A1 ~~~ A2
+        B1[Reward Matrix R(s,a)]
+        B2[-1: no connection]
+        B3[0: connected]
+        B4[100: goal connection]
+        B1 ~~~ B2
+        B2 ~~~ B3
+        B3 ~~~ B4
     end
     
     subgraph Agent
-        C[Q-Table Q(s,a)<br>Initialized to 0]
-        D[Epsilon-greedy<br>Action Selection]
-        E[Q-Value Update:<br>Q = R + γ·maxQ']
+        C1[Q-Table Q(s,a)]
+        C2[Initialized to 0]
+        C1 ~~~ C2
+        D1[Epsilon-greedy]
+        D2[Action Selection]
+        D1 ~~~ D2
+        E1[Q-Value Update]
+        E2[Q = R + γ·maxQ']
+        E1 ~~~ E2
     end
     
     subgraph Visualization
-        F[Room Circles<br>with numbers]
-        G[Path Lines<br>Blue: connections<br>Red: chosen path]
-        H[Path Log<br>Text output]
+        F1[Room Circles]
+        F2[with numbers]
+        F1 ~~~ F2
+        G1[Path Lines]
+        G2[Blue: connections]
+        G3[Red: chosen path]
+        G1 ~~~ G2
+        G2 ~~~ G3
+        H1[Path Log]
+        H2[Text output]
+        H1 ~~~ H2
     end
     
-    A --> B
-    B --> C
-    C --> D
-    D --> E
-    E --> C
-    C --> G
-    C --> H
-    F --> G
+    A1 --> B1
+    B1 --> C1
+    C1 --> D1
+    D1 --> E1
+    E1 --> C1
+    C1 --> G1
+    C1 --> H1
+    F1 --> G1
 ```
 
 ## Core Concepts
@@ -87,20 +109,27 @@ The R table defines the environment's reward structure:
 
 ```mermaid
 flowchart TD
-    A[Start: Generate room layout] --> B[Create random connections<br>between neighboring rooms]
-    B --> C[Set goal room connections<br>R = 100 for goal-directed paths]
-    C --> D[Training Loop:<br>N episodes]
-    D --> E[Start in random room]
+    A[Start: Generate room layout] --> B1[Create random connections]
+    B1 ~~~ B2[between neighboring rooms]
+    B1 --> C1[Set goal room connections]
+    C1 ~~~ C2[R = 100 for goal-directed paths]
+    C2 --> D1[Training Loop]
+    D1 ~~~ D2[N episodes]
+    D2 --> E[Start in random room]
     E --> F{At goal?}
     F -->|Yes| G[Episode complete]
-    G --> D
-    F -->|No| H[Pick action:<br>random from available R > -1]
-    H --> I[Compute max Q' for next state]
-    I --> J[Update Q-table:<br>Q = R + γ·maxQ']
-    J --> K[Move to next state]
+    G --> D2
+    F -->|No| H1[Pick action]
+    H1 ~~~ H2[random from available R > -1]
+    H2 --> I1[Compute max Q']
+    I1 ~~~ I2[for next state]
+    I2 --> J1[Update Q-table]
+    J1 ~~~ J2[Q = R + γ·maxQ']
+    J2 --> K[Move to next state]
     K --> F
-    D --> L[Training complete]
-    L --> M[Find Optimal Path:<br>Start → follow max Q until goal]
+    D2 --> L[Training complete]
+    L --> M1[Find Optimal Path]
+    M1 ~~~ M2[Start → follow max Q until goal]
 ```
 
 ### Environment Layout
