@@ -35,7 +35,7 @@ flowchart TD
         A1[Room Layout]
         A2[Grid-based positions]
         A1 ~~~ A2
-        B1[Reward Matrix R(s,a)]
+        B1["Reward Matrix R(s,a)"]
         B2[-1: no connection]
         B3[0: connected]
         B4[100: goal connection]
@@ -45,7 +45,7 @@ flowchart TD
     end
     
     subgraph Agent
-        C1[Q-Table Q(s,a)]
+        C1["Q-Table Q(s,a)"]
         C2[Initialized to 0]
         C1 ~~~ C2
         D1[Epsilon-greedy]
